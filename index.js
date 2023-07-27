@@ -275,11 +275,6 @@ function inject (bot) {
   function fullStop () {
     bot.clearControlStates()
 
-    // Force horizontal velocity to 0 (otherwise inertia can move us too far)
-    // Kind of cheaty, but the server will not tell the difference
-    bot.entity.velocity.x = 0
-    bot.entity.velocity.z = 0
-
     const blockX = Math.floor(bot.entity.position.x) + 0.5
     const blockZ = Math.floor(bot.entity.position.z) + 0.5
 
