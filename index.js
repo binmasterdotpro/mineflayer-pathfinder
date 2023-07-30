@@ -160,6 +160,7 @@ function inject (bot) {
   }
 
   bot.pathfinder.stop = () => {
+    if (!bot.pathfinder.goal) return
     stopPathing = true
   }
 
@@ -274,14 +275,6 @@ function inject (bot) {
    */
   function fullStop () {
     bot.clearControlStates()
-
-    const blockX = Math.floor(bot.entity.position.x) + 0.5
-    const blockZ = Math.floor(bot.entity.position.z) + 0.5
-
-    // Make sure our bounding box don't collide with neighboring blocks
-    // otherwise recenter the position
-    if (Math.abs(bot.entity.position.x - blockX) > 0.2) { bot.entity.position.x = blockX }
-    if (Math.abs(bot.entity.position.z - blockZ) > 0.2) { bot.entity.position.z = blockZ }
   }
 
   function moveToEdge (refBlock, edge) {
