@@ -532,7 +532,7 @@ function inject (bot) {
       dz = nextPoint.z - p.z
     }
 
-    bot.look(Math.atan2(-dx, -dz), 0)
+    bot.look(Math.atan2(-dx, -dz), Math.random() > 0.5 ? -Math.random() * 0.03 : Math.random() * 0.03)
     bot.setControlState('forward', true)
     bot.setControlState('jump', false)
 
