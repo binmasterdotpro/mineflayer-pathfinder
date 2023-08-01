@@ -408,7 +408,7 @@ function inject (bot) {
     const p = bot.entity.position
 
     // Handle digging
-    if (digging || nextPoint.toBrewak.length > 0) {
+    if (digging || nextPoint.toBreak.length > 0) {
       if (!digging && bot.entity.onGround) {
         digging = true
         const b = nextPoint.toBreak.shift()
