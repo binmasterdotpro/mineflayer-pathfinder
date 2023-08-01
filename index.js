@@ -330,7 +330,7 @@ function inject (bot) {
 
   bot.on('blockUpdate', (oldBlock, newBlock) => {
     if (!oldBlock || !newBlock) return
-    if (isPositionNearPath(oldBlock.position, path) && oldBlock.type !== newBlock.type) {
+    if (oldBlock.type !== newBlock.type && isPositionNearPath(oldBlock.position, path)) {
       resetPath('block_updated', false)
     }
   })
@@ -354,8 +354,7 @@ function inject (bot) {
     if (stateMovements && stateMovements.allowFreeMotion && stateGoal && stateGoal.entity) {
       const target = stateGoal.entity
       if (physics.canStraightLine([target.position])) {
-        bot.lookAt(target.position.offset(0, 1.6, 0))
-
+        bot.lookAt(target.position.offset(0, 1.62, 0))
         if (target.position.distanceSquared(bot.entity.position) > stateGoal.rangeSq) {
           bot.setControlState('forward', true)
         } else {
@@ -405,15 +404,11 @@ function inject (bot) {
       }
     }
 
-    if (path.length === 0) {
-      return
-    }
-
     let nextPoint = path[0]
     const p = bot.entity.position
 
     // Handle digging
-    if (digging || nextPoint.toBreak.length > 0) {
+    if (digging || nextPoint.toBrewak.length > 0) {
       if (!digging && bot.entity.onGround) {
         digging = true
         const b = nextPoint.toBreak.shift()
