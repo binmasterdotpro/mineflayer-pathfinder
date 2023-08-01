@@ -403,6 +403,7 @@ function inject (bot) {
           pathUpdated = true
         }
       }
+      return
     }
 
     let nextPoint = path[0]
