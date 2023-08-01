@@ -13,6 +13,7 @@ const nbt = require('prismarine-nbt')
 const interactableBlocks = require('./lib/interactable.json')
 
 function inject (bot) {
+  console.log('Running mineflayer-pathfinder modified by aes512')
   const waterType = bot.registry.blocksByName.water.id
   const ladderId = bot.registry.blocksByName.ladder.id
   const vineId = bot.registry.blocksByName.vine.id
